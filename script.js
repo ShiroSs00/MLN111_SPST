@@ -856,6 +856,7 @@ function loadChapter() {
   choicesEl.innerHTML = "";
   resultPanel.classList.add("hidden");
   statTutorial.classList.add("hidden");
+  dialoguePanel.classList.remove("hidden");
   dialogueNextBtn.classList.remove("hidden");
   statsGrid.classList.toggle("hidden", !statsIntroduced);
   restartChapterAnimation();
@@ -1020,16 +1021,66 @@ function chooseOption(choice) {
 function showConsequence(choice, chapter, beforeStats) {
   document.getElementById("consequence-text").innerText = choice.consequence;
   renderStatChanges(choice.effects, beforeStats);
-  document.getElementById("lesson-text").innerText = chapter.lesson;
+  document.getElementById("choice-explanation-text").innerText = choice.detail;
+  document.getElementById("choice-analysis-text").innerText = buildChoiceAnalysis(choice);
+  document.getElementById("lesson-text").innerText = buildChoiceLesson(choice, chapter);
   nextChapterBtn.innerText =
     currentChapterIndex === chapters.length - 1
       ? "Xem kết thúc"
       : "Sang chương tiếp theo";
 
   resultPanel.classList.remove("hidden");
+  dialoguePanel.classList.add("hidden");
   resultPanel.classList.remove("chapter-enter");
   void resultPanel.offsetWidth;
   resultPanel.classList.add("chapter-enter");
+}
+
+function buildChoiceAnalysis(choice) {
+  const effects = choice.effects;
+  const positives = [];
+  const negatives = [];
+
+  Object.keys(effects).forEach((key) => {
+    const value = effects[key];
+    const statName = statMeta[key].label;
+
+    if (value > 0) {
+      positives.push(`${statName} tăng ${value}`);
+      return;
+    }
+
+    if (value < 0) {
+      negatives.push(`${statName} giảm ${Math.abs(value)}`);
+    }
+  });
+
+  const positiveText = positives.length
+    ? `Mặt tích cực: ${positives.join(", ")}.`
+    : "Mặt tích cực: lựa chọn này không tạo tăng trưởng rõ rệt cho chỉ số nào.";
+  const negativeText = negatives.length
+    ? `Mặt hạn chế: ${negatives.join(", ")}.`
+    : "Mặt hạn chế: lựa chọn này ít tạo tổn thất trực tiếp lên các chỉ số.";
+
+  return `${positiveText} ${negativeText} Điều này cho thấy chính sách luôn có đánh đổi: phát triển lực lượng sản xuất, ổn định xã hội và điều chỉnh quan hệ sản xuất phải được cân bằng với nhau.`;
+}
+
+function buildChoiceLesson(choice, chapter) {
+  const effects = choice.effects;
+
+  if ((effects.techPower || 0) > 15 && ((effects.trust || 0) < 0 || (effects.inequality || 0) > 0)) {
+    return "Bài học: nếu chỉ thúc đẩy công nghệ và quyền lực nền tảng mà không điều chỉnh quan hệ sở hữu, phân phối và trách nhiệm xã hội, lực lượng sản xuất mới có thể làm mâu thuẫn giai cấp sâu sắc hơn. " + chapter.lesson;
+  }
+
+  if ((effects.economy || 0) < -10 && (effects.techPower || 0) <= 0) {
+    return "Bài học: phủ nhận hoặc kìm hãm công nghệ quá mức có thể làm lực lượng sản xuất trì trệ. Vấn đề không phải loại bỏ AI, mà là đặt AI trong quan hệ sản xuất phù hợp với lợi ích xã hội. " + chapter.lesson;
+  }
+
+  if ((effects.trust || 0) > 0 || (effects.stability || 0) > 0 || (effects.inequality || 0) < 0) {
+    return "Bài học: khi nhà nước dùng luật pháp, phúc lợi và điều tiết để phân phối lại lợi ích, quan hệ sản xuất được điều chỉnh để phù hợp hơn với lực lượng sản xuất mới. " + chapter.lesson;
+  }
+
+  return "Bài học: mỗi chính sách đều thể hiện một cách xử lý mâu thuẫn giữa lực lượng sản xuất mới và quan hệ sản xuất hiện hành. " + chapter.lesson;
 }
 
 function nextChapter() {
