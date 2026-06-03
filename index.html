@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GOVERN: Digital Society</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="start-screen" class="screen start-screen fade-in">
+        <div class="start-content">
+          <p class="eyebrow">Novaterra, năm 2045</p>
+          <h1>GOVERN: Digital Society</h1>
+          <h2>Điều Hành Xã Hội Số</h2>
+          <p class="tagline">
+            Khi AI có thể quản lý mọi thứ, nhà nước còn cần thiết không?
+          </p>
+          <p class="intro">
+            Một visual novel quyết định về nhà nước, AI và xã hội số. Bạn là
+            lãnh đạo Novaterra, nơi OmniCore đang chứng minh rằng công nghệ có
+            thể vận hành gần như mọi thứ.
+          </p>
+          <button id="start-btn" class="primary-btn">Bắt đầu</button>
+        </div>
+      </section>
+
+      <section id="game-screen" class="screen game-screen hidden">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">GOVERN: Digital Society</p>
+            <h2>Điều Hành Xã Hội Số</h2>
+          </div>
+          <div class="chapter-pill">
+            Chương <span id="chapter-number">1</span>/<span id="chapter-total">8</span>
+          </div>
+        </header>
+
+        <section id="stat-tutorial" class="stat-tutorial hidden">
+          <p class="eyebrow">Hệ thống chỉ số quốc gia</p>
+          <h2>Hiểu các chỉ số trước khi ra quyết định</h2>
+          <div class="tutorial-grid">
+            <article>
+              <h3>💰 Kinh tế</h3>
+              <p>
+                Thể hiện tăng trưởng, ngân sách, đầu tư và khả năng vận hành nền
+                kinh tế. Nếu quá thấp, đất nước có thể rơi vào trì trệ.
+              </p>
+            </article>
+            <article>
+              <h3>🛡️ Ổn định xã hội</h3>
+              <p>
+                Thể hiện mức độ trật tự, an toàn và khả năng kiểm soát xung đột
+                xã hội. Nếu quá thấp, xã hội có thể rơi vào khủng hoảng.
+              </p>
+            </article>
+            <article>
+              <h3>🤝 Niềm tin nhân dân</h3>
+              <p>
+                Thể hiện mức độ người dân tin tưởng vào nhà nước và chính sách.
+                Nếu quá thấp, nhà nước mất tính chính danh.
+              </p>
+            </article>
+            <article>
+              <h3>⚖️ Bất bình đẳng</h3>
+              <p>
+                Thể hiện khoảng cách giàu nghèo, chênh lệch cơ hội và phân hóa xã
+                hội. Chỉ số này càng cao càng nguy hiểm.
+              </p>
+            </article>
+            <article>
+              <h3>🤖 Quyền lực công nghệ</h3>
+              <p>
+                Thể hiện mức độ các tập đoàn công nghệ tư nhân kiểm soát dữ liệu,
+                hạ tầng và dịch vụ xã hội. Nếu quá cao, nhà nước có thể bị phụ
+                thuộc hoặc bị thay thế quyền lực thực tế.
+              </p>
+            </article>
+          </div>
+          <p class="tutorial-note">
+            Trong game, mỗi lựa chọn chính sách sẽ làm thay đổi các chỉ số này.
+            Nhiệm vụ của bạn không phải là làm mọi chỉ số tăng tối đa, mà là giữ
+            cân bằng để xã hội không rơi vào khủng hoảng.
+          </p>
+          <button id="understand-stats-btn" class="primary-btn">Tôi đã hiểu</button>
+        </section>
+
+        <div id="main-layout" class="main-layout">
+          <section id="scene-area" class="scene-area">
+            <div class="chapter-title-bar">
+              <p class="eyebrow">Hồ sơ chương</p>
+              <h2 id="chapter-title">Chương</h2>
+            </div>
+
+            <section id="character-panel" class="character-panel">
+              <div class="avatar-frame">
+                <img id="character-avatar" alt="" class="character-avatar hidden" />
+                <div id="avatar-placeholder" class="avatar-placeholder">H</div>
+              </div>
+              <div class="speaker-card">
+                <p id="speaker" class="speaker">Hệ thống</p>
+                <p id="speaker-role" class="speaker-role">Tường thuật</p>
+              </div>
+            </section>
+
+            <section id="dialogue-panel" class="dialogue-panel">
+              <p id="story-text" class="story-text"></p>
+              <p id="dialogue-hint" class="dialogue-hint">
+                Nhấn Tiếp tục hoặc bấm vào hộp thoại để xem dòng tiếp theo
+              </p>
+              <button id="dialogue-next-btn" class="primary-btn dialogue-next-btn">
+                Tiếp tục
+              </button>
+            </section>
+
+            <section id="choices" class="choices hidden"></section>
+
+            <section id="result-panel" class="result-panel hidden">
+              <p class="result-label">Hậu quả quyết định</p>
+              <p id="consequence-text"></p>
+              <div id="change-list" class="stat-changes"></div>
+              <p id="lesson-text" class="lesson"></p>
+              <button id="next-chapter-btn" class="primary-btn">
+                Sang chương tiếp theo
+              </button>
+            </section>
+          </section>
+
+          <aside id="stats-grid" class="stats-panel hidden" aria-label="Chỉ số quốc gia">
+            <p class="eyebrow">Chỉ số quốc gia</p>
+            <article class="stat-card">
+              <div class="stat-head">
+                <span>💰 Kinh tế</span>
+                <strong id="economy-value">50</strong>
+              </div>
+              <div class="bar"><span id="economy-bar"></span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-head">
+                <span>🛡️ Ổn định xã hội</span>
+                <strong id="stability-value">50</strong>
+              </div>
+              <div class="bar"><span id="stability-bar"></span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-head">
+                <span>🤝 Niềm tin nhân dân</span>
+                <strong id="trust-value">50</strong>
+              </div>
+              <div class="bar"><span id="trust-bar"></span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-head">
+                <span>⚖️ Bất bình đẳng</span>
+                <strong id="inequality-value">50</strong>
+              </div>
+              <div class="bar danger"><span id="inequality-bar"></span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-head">
+                <span>🤖 Quyền lực công nghệ</span>
+                <strong id="techPower-value">50</strong>
+              </div>
+              <div class="bar danger"><span id="techPower-bar"></span></div>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <section id="ending-screen" class="screen ending-screen hidden">
+        <div class="ending-content">
+          <p class="eyebrow">Báo cáo cuối nhiệm kỳ</p>
+          <h1 id="ending-title">Ending</h1>
+          <p id="ending-description" class="ending-description"></p>
+          <p id="ending-specific-conclusion" class="ending-specific-conclusion"></p>
+          <div id="final-stats" class="final-stats"></div>
+          <p id="final-conclusion" class="final-conclusion"></p>
+          <button id="restart-btn" class="primary-btn">Chơi lại</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
