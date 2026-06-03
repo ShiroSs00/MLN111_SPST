@@ -17,6 +17,7 @@ let statsIntroduced = false;
 let isTyping = false;
 let typingTimer = null;
 let currentFullText = "";
+let currentSpeaker = "";
 
 const typingSpeed = 25;
 
@@ -818,6 +819,7 @@ function restartGame() {
   currentLineIndex = 0;
   hasChosen = false;
   statsIntroduced = false;
+  currentSpeaker = "";
   updateStats();
   statsGrid.classList.add("hidden");
   statTutorial.classList.add("hidden");
@@ -843,6 +845,7 @@ function loadChapter() {
   isTyping = false;
   currentLineIndex = 0;
   hasChosen = false;
+  currentSpeaker = "";
 
   document.getElementById("chapter-title").innerText = chapter.title;
   document.getElementById("chapter-number").innerText = currentChapterIndex + 1;
@@ -867,13 +870,12 @@ function showCurrentLine() {
   document.getElementById("speaker").innerText = line.speaker;
   document.getElementById("speaker").classList.toggle("narration", line.speaker === "Hệ thống");
   document.getElementById("speaker-role").innerText = getRoleForSpeaker(line.speaker);
-  updateAvatar(line.speaker);
+  if (line.speaker !== currentSpeaker) {
+    currentSpeaker = line.speaker;
+    updateAvatar(line.speaker);
+  }
   currentFullText = line.text;
   dialogueNextBtn.innerText = isLastLine ? "Xem lựa chọn" : "Tiếp tục";
-
-  dialoguePanel.classList.remove("chapter-enter");
-  void dialoguePanel.offsetWidth;
-  dialoguePanel.classList.add("chapter-enter");
   typeCurrentText();
 }
 
