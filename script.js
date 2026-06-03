@@ -53,7 +53,7 @@ const speakerRoles = {
 };
 
 const finalConclusion =
-  "Công nghệ không thay thế nhà nước. Công nghệ chỉ thay đổi phương thức hoạt động của nhà nước. Khi xã hội còn mâu thuẫn lợi ích, bất bình đẳng và phân hóa giai cấp, nhà nước vẫn cần thiết để tổ chức kinh tế, quản lý xã hội, bảo vệ an ninh và điều hòa lợi ích.";
+  "AI, dữ liệu và tự động hóa làm lực lượng sản xuất phát triển rất nhanh, nhưng chúng không tự giải quyết được quan hệ sản xuất: ai sở hữu dữ liệu, ai kiểm soát nền tảng, ai hưởng lợi và ai bị bỏ lại. Công nghệ không thay thế nhà nước. Công nghệ chỉ thay đổi phương thức hoạt động của nhà nước. Khi xã hội còn mâu thuẫn lợi ích, bất bình đẳng và phân hóa giai cấp, nhà nước vẫn cần thiết để điều chỉnh quan hệ sản xuất, tổ chức kinh tế, quản lý xã hội, bảo vệ an ninh và điều hòa lợi ích.";
 
 const chapters = [
   {
@@ -101,6 +101,14 @@ const chapters = [
       },
       {
         speaker: "Mira",
+        text: "AI, robot và dữ liệu đang làm lực lượng sản xuất phát triển rất nhanh.",
+      },
+      {
+        speaker: "Mira",
+        text: "Nhưng nếu quan hệ sở hữu, phân phối và kiểm soát xã hội không thay đổi phù hợp, mâu thuẫn sẽ ngày càng gay gắt.",
+      },
+      {
+        speaker: "Mira",
         text: "Xã hội có nhiều nhóm lợi ích khác nhau. Nếu không có thiết chế điều tiết, mâu thuẫn sẽ bùng nổ.",
       },
       {
@@ -125,25 +133,25 @@ const chapters = [
       },
     ],
     lesson:
-      "Nhà nước tồn tại vì xã hội có nhiều nhóm lợi ích và mâu thuẫn cần được điều hòa bằng một thiết chế quyền lực công cộng. AI có thể hỗ trợ phân tích, nhưng không tự đại diện cho lợi ích chung.",
+      "Bài học biện chứng: lực lượng sản xuất mới như AI, dữ liệu và tự động hóa có thể thúc đẩy phát triển, nhưng chúng cũng đặt ra yêu cầu điều chỉnh quan hệ sản xuất. Nhà nước tồn tại vì xã hội có nhiều nhóm lợi ích và mâu thuẫn cần được điều hòa bằng một thiết chế quyền lực công cộng. AI có thể hỗ trợ phân tích, nhưng không tự đại diện cho lợi ích chung.",
     choices: [
       {
         text: "Để AI và thị trường tự điều phối xã hội.",
-        detail: "Ưu tiên tốc độ, lợi nhuận và hiệu quả kỹ thuật.",
+        detail: "Lực lượng sản xuất tăng nhanh nhưng quan hệ sở hữu và phân phối không được điều chỉnh.",
         effects: { economy: 15, techPower: 20, trust: -10, inequality: 10 },
         consequence:
           "Kinh tế số tăng nhanh và OmniCore được thị trường ủng hộ. Tuy nhiên, nhiều nhóm yếu thế lo rằng quyền lợi của họ sẽ bị quyết định bởi thuật toán không chịu trách nhiệm chính trị.",
       },
       {
         text: "Dùng AI để đổi mới nhà nước nhưng giữ quyền điều phối công.",
-        detail: "Đặt công nghệ dưới luật pháp và trách nhiệm chính trị.",
+        detail: "Phát triển lực lượng sản xuất đồng thời điều chỉnh quan hệ sản xuất bằng luật và trách nhiệm công.",
         effects: { economy: 5, stability: 10, trust: 15, techPower: -5 },
         consequence:
           "Người dân yên tâm hơn vì nhà nước không phủ nhận công nghệ, nhưng cũng không giao toàn bộ quyền lực xã hội cho tập đoàn tư nhân.",
       },
       {
         text: "Hạn chế mạnh công nghệ để bảo vệ vai trò truyền thống của nhà nước.",
-        detail: "Ưu tiên kiểm soát trực tiếp, giảm phụ thuộc AI.",
+        detail: "Giữ quan hệ quản lý cũ nhưng làm chậm sự phát triển của lực lượng sản xuất.",
         effects: { economy: -15, stability: 5, techPower: -10, trust: 5 },
         consequence:
           "Một bộ phận người dân thấy nhà nước cứng rắn hơn, nhưng nhiều dự án đổi mới bị đình lại. Doanh nghiệp bắt đầu cân nhắc rời Novaterra.",
@@ -186,6 +194,10 @@ const chapters = [
         text: "Nếu bỏ mặc người lao động, tăng trưởng sẽ chỉ phục vụ cho một nhóm sở hữu công nghệ.",
       },
       {
+        speaker: "Mira",
+        text: "Khi lực lượng sản xuất thay đổi, quan hệ lao động và phân phối thu nhập cũng phải được điều chỉnh.",
+      },
+      {
         speaker: "Elias",
         text: "Lịch sử luôn có người bị thay thế. Đó là giá của tiến bộ.",
       },
@@ -203,25 +215,25 @@ const chapters = [
       },
     ],
     lesson:
-      "Trong xã hội có giai cấp, xung đột lợi ích giữa người lao động và chủ sở hữu tư liệu sản xuất có thể xuất hiện dưới hình thức mới. Nhà nước cần điều tiết để quá trình tự động hóa không biến thành khủng hoảng xã hội.",
+      "AI và robot là bước phát triển mới của lực lượng sản xuất. Nhưng nếu quan hệ sản xuất vẫn để toàn bộ lợi ích rơi vào nhóm sở hữu công nghệ, người lao động sẽ bị đẩy ra khỏi quá trình phát triển. Nhà nước cần điều tiết quan hệ lao động, đào tạo lại và phân phối chi phí chuyển đổi để tự động hóa không biến thành khủng hoảng xã hội.",
     choices: [
       {
         text: "Để thị trường tự điều chỉnh, không can thiệp.",
-        detail: "Tin rằng cạnh tranh sẽ tự tạo việc làm mới.",
+        detail: "Để chủ sở hữu công nghệ tự quyết quan hệ lao động và phân phối lợi ích.",
         effects: { economy: 20, techPower: 15, inequality: 20, trust: -20, stability: -15 },
         consequence:
           "Doanh nghiệp tăng lợi nhuận và tiếp tục đầu tư. Nhưng thất nghiệp lan rộng, biểu tình tăng lên và nhiều lao động cảm thấy nhà nước bỏ rơi họ.",
       },
       {
         text: "Lập quỹ hỗ trợ thất nghiệp và đào tạo lại lao động.",
-        detail: "Chia sẻ chi phí chuyển đổi bằng chính sách công.",
+        detail: "Điều chỉnh quan hệ lao động để người lao động thích nghi với lực lượng sản xuất mới.",
         effects: { economy: -5, stability: 20, trust: 20, inequality: -15 },
         consequence:
           "Ngân sách chịu áp lực nhưng nhiều lao động được học kỹ năng mới. Xung đột xã hội giảm vì người dân thấy nhà nước đứng ra điều hòa lợi ích.",
       },
       {
         text: "Cấm thay thế lao động bằng AI trên diện rộng.",
-        detail: "Bảo vệ việc làm bằng mệnh lệnh hành chính.",
+        detail: "Bảo vệ quan hệ lao động cũ nhưng có nguy cơ kìm hãm lực lượng sản xuất.",
         effects: { economy: -20, stability: 10, techPower: -10, trust: 5 },
         consequence:
           "Việc làm cũ được giữ tạm thời, nhưng đầu tư giảm mạnh. Một số công ty chuyển nhà máy ra nước ngoài.",
@@ -268,6 +280,10 @@ const chapters = [
         text: "Nếu dữ liệu người dân trở thành hàng hóa không kiểm soát, người yếu thế sẽ bị tổn thương trước tiên.",
       },
       {
+        speaker: "Mira",
+        text: "Dữ liệu giờ không chỉ là thông tin cá nhân. Nó đã trở thành tư liệu sản xuất quan trọng trong nền kinh tế số.",
+      },
+      {
         speaker: "Kaito",
         text: "Nhưng nếu xử phạt quá mạnh, nhà đầu tư công nghệ sẽ lo sợ.",
       },
@@ -277,7 +293,7 @@ const chapters = [
       },
     ],
     lesson:
-      "Dữ liệu là một dạng quyền lực trong thời đại số. Nhà nước hiện đại quản lý xã hội bằng pháp luật, bảo vệ quyền công dân và buộc các chủ thể công nghệ phải chịu trách nhiệm.",
+      "Dữ liệu là tư liệu sản xuất mới của thời đại số. Vấn đề biện chứng nằm ở quan hệ sản xuất: dữ liệu thuộc về ai, ai được khai thác, ai chịu rủi ro và ai kiểm soát thuật toán. Nhà nước hiện đại phải quản lý bằng pháp luật, bảo vệ quyền công dân và buộc các chủ thể công nghệ chịu trách nhiệm.",
     choices: [
       {
         text: "Phạt OmniCore và ban hành Luật Bảo vệ dữ liệu cá nhân.",
@@ -338,6 +354,10 @@ const chapters = [
         text: "Nếu nhà nước không điều tiết, xã hội sẽ bị chia thành hai thế giới.",
       },
       {
+        speaker: "Mira",
+        text: "Một bên nắm dữ liệu, vốn và nền tảng; bên còn lại chỉ có sức lao động bị thay thế dần.",
+      },
+      {
         speaker: "Kaito",
         text: "Đánh thuế quá cao vào doanh nghiệp công nghệ có thể làm giảm tăng trưởng.",
       },
@@ -359,7 +379,7 @@ const chapters = [
       },
     ],
     lesson:
-      "Nhà nước hiện đại có chức năng tổ chức kinh tế và phân phối lại nguồn lực xã hội. Nếu lợi ích công nghệ chỉ tập trung vào nhóm sở hữu vốn, dữ liệu và nền tảng, mâu thuẫn xã hội sẽ sâu sắc hơn.",
+      "Khi lực lượng sản xuất số phát triển không đều, quan hệ phân phối cũng trở nên căng thẳng hơn. Nếu lợi ích công nghệ chỉ tập trung vào nhóm sở hữu vốn, dữ liệu và nền tảng, mâu thuẫn xã hội sẽ sâu sắc. Nhà nước phải tổ chức kinh tế và phân phối lại nguồn lực để quan hệ sản xuất không kìm hãm sự phát triển chung.",
     choices: [
       {
         text: "Đánh thuế nền tảng số để đầu tư giáo dục, y tế và hạ tầng vùng yếu thế.",
@@ -424,6 +444,10 @@ const chapters = [
         text: "Nhà nước không thể để quyền được chữa bệnh phụ thuộc hoàn toàn vào khả năng chi trả và dữ liệu thương mại.",
       },
       {
+        speaker: "Mira",
+        text: "Nếu quan hệ tiếp cận dịch vụ công chỉ dựa trên dữ liệu và bảo hiểm, AI sẽ làm bất bình đẳng cũ trở nên sắc nét hơn.",
+      },
+      {
         speaker: "Elias",
         text: "OmniCore chỉ tối ưu hệ thống theo dữ liệu.",
       },
@@ -437,7 +461,7 @@ const chapters = [
       },
     ],
     lesson:
-      "Nhà nước phải bảo đảm phúc lợi công và quyền tiếp cận dịch vụ thiết yếu. AI có thể tăng hiệu quả, nhưng nếu thiếu định hướng công, nó dễ tái sản xuất bất bình đẳng có sẵn trong xã hội.",
+      "AI y tế làm lực lượng sản xuất trong lĩnh vực chăm sóc sức khỏe tiến bộ hơn. Nhưng quan hệ sản xuất trong y tế gồm quyền tiếp cận, cách phân bổ dịch vụ và trách nhiệm với nhóm yếu thế. Nhà nước phải bảo đảm phúc lợi công để công nghệ tăng hiệu quả mà không tái sản xuất bất bình đẳng có sẵn.",
     choices: [
       {
         text: "Quy định AI y tế phải ưu tiên nhu cầu điều trị và nhóm yếu thế.",
@@ -490,6 +514,10 @@ const chapters = [
         text: "Nếu chỉ trấn áp, người dân sẽ càng nghĩ nhà nước che giấu sự thật.",
       },
       {
+        speaker: "Mira",
+        text: "Khi nền tảng số kiểm soát thông tin, quan hệ giữa nhà nước, công dân và doanh nghiệp công nghệ cũng thay đổi.",
+      },
+      {
         speaker: "Kaito",
         text: "Cần phản ứng nhanh. Thị trường đang hoảng loạn vì bất ổn xã hội.",
       },
@@ -511,7 +539,7 @@ const chapters = [
       },
     ],
     lesson:
-      "Nhà nước duy trì ổn định xã hội không chỉ bằng cưỡng chế mà còn bằng minh bạch, trách nhiệm và tính chính danh. Trong thời đại số, quản lý xã hội phải gắn với niềm tin công chúng.",
+      "Nền tảng truyền thông số là một bộ phận của lực lượng sản xuất tinh thần và thông tin. Nếu quan hệ kiểm soát thông tin nằm hoàn toàn trong tay tập đoàn hoặc bị nhà nước dùng thiếu minh bạch, niềm tin xã hội sẽ khủng hoảng. Nhà nước duy trì ổn định không chỉ bằng cưỡng chế mà bằng minh bạch, trách nhiệm và tính chính danh.",
     choices: [
       {
         text: "Công khai dữ liệu kiểm toán, họp báo minh bạch và xử lý tài khoản giả theo luật.",
@@ -568,6 +596,10 @@ const chapters = [
         text: "Nó liên quan đến chủ quyền, an toàn xã hội và quyền lợi của công dân.",
       },
       {
+        speaker: "Mira",
+        text: "Hạ tầng số là điều kiện vật chất mới của sản xuất và đời sống. Nếu mất quyền kiểm soát nó, nhà nước mất năng lực tổ chức xã hội.",
+      },
+      {
         speaker: "Elias",
         text: "OmniCore có đội phản ứng nhanh tốt nhất. Hãy giao toàn bộ hạ tầng cho chúng tôi bảo vệ.",
       },
@@ -585,7 +617,7 @@ const chapters = [
       },
     ],
     lesson:
-      "Nhà nước có chức năng bảo vệ chủ quyền quốc gia, an ninh công cộng và hạ tầng chiến lược. Trong thời đại số, chủ quyền không chỉ nằm ở biên giới vật lý mà còn nằm trong dữ liệu và hạ tầng mạng.",
+      "Hạ tầng mạng, dữ liệu và hệ thống điện toán là điều kiện vật chất của lực lượng sản xuất hiện đại. Quan hệ sản xuất ở đây là quyền kiểm soát hạ tầng chiến lược thuộc về ai và phục vụ lợi ích nào. Nhà nước phải bảo vệ chủ quyền số, an ninh công cộng và điều kiện vận hành của toàn xã hội.",
     choices: [
       {
         text: "Xây dựng trung tâm an ninh mạng quốc gia và hợp tác có kiểm soát với doanh nghiệp.",
@@ -650,6 +682,10 @@ const chapters = [
         text: "Nó tối ưu theo mục tiêu do người sở hữu và thiết kế đặt ra.",
       },
       {
+        speaker: "Mira",
+        text: "Nếu quan hệ sở hữu và kiểm soát nằm trong tay OmniCore, AI sẽ phục vụ mục tiêu của OmniCore trước khi phục vụ lợi ích chung.",
+      },
+      {
         speaker: "Linh",
         text: "Nếu AUTO-STATE từ chối trợ cấp, từ chối điều trị hoặc xếp tôi vào nhóm rủi ro thì sao?",
       },
@@ -667,7 +703,7 @@ const chapters = [
       },
     ],
     lesson:
-      "AI là công cụ hỗ trợ quản lý, không phải thiết chế chính trị chịu trách nhiệm trước xã hội. Khi còn mâu thuẫn lợi ích và phân hóa giai cấp, nhà nước vẫn cần thiết để tổ chức kinh tế, quản lý xã hội, bảo vệ an ninh và điều hòa lợi ích.",
+      "AUTO-STATE đặt câu hỏi trung tâm của game: lực lượng sản xuất đã phát triển đến mức AI có thể hỗ trợ quản lý xã hội, nhưng quan hệ sản xuất vẫn quyết định công nghệ phục vụ ai. AI là công cụ, không phải thiết chế chính trị chịu trách nhiệm trước xã hội. Nhà nước vẫn cần thiết để điều chỉnh sở hữu, phân phối, kiểm soát và trách nhiệm trong xã hội có giai cấp.",
     choices: [
       {
         text: "Chấp nhận AUTO-STATE và giao OmniCore vận hành dịch vụ công.",

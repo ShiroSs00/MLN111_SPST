@@ -520,6 +520,35 @@ p {
   margin-bottom: 18px;
 }
 
+.theory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.theory-grid article {
+  padding: 18px;
+  border: 1px solid rgba(255, 209, 102, 0.26);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(255, 209, 102, 0.1), transparent),
+    rgba(255, 255, 255, 0.05);
+}
+
+.theory-grid h3 {
+  margin: 0 0 8px;
+  color: var(--yellow);
+  font-size: 18px;
+}
+
+.theory-grid p {
+  margin-bottom: 0;
+  color: #dceeff;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
 .tutorial-grid article {
   padding: 16px;
   border: 1px solid rgba(56, 232, 255, 0.18);
@@ -661,6 +690,10 @@ p {
   }
 
   .tutorial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .theory-grid {
     grid-template-columns: 1fr;
   }
 
