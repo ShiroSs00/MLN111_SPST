@@ -1044,15 +1044,16 @@ function buildChoiceAnalysis(choice) {
   Object.keys(effects).forEach((key) => {
     const value = effects[key];
     const statName = statMeta[key].label;
+    const isGoodChange = isBeneficialStatChange(key, value);
+    const direction = value > 0 ? "tăng" : "giảm";
+    const amount = Math.abs(value);
 
-    if (value > 0) {
-      positives.push(`${statName} tăng ${value}`);
+    if (isGoodChange) {
+      positives.push(`${statName} ${direction} ${amount}`);
       return;
     }
 
-    if (value < 0) {
-      negatives.push(`${statName} giảm ${Math.abs(value)}`);
-    }
+    negatives.push(`${statName} ${direction} ${amount}`);
   });
 
   const positiveText = positives.length
@@ -1063,6 +1064,18 @@ function buildChoiceAnalysis(choice) {
     : "Mặt hạn chế: lựa chọn này ít tạo tổn thất trực tiếp lên các chỉ số.";
 
   return `${positiveText} ${negativeText} Điều này cho thấy chính sách luôn có đánh đổi: phát triển lực lượng sản xuất, ổn định xã hội và điều chỉnh quan hệ sản xuất phải được cân bằng với nhau.`;
+}
+
+function isBeneficialStatChange(key, value) {
+  if (value === 0) {
+    return true;
+  }
+
+  if (key === "inequality" || key === "techPower") {
+    return value < 0;
+  }
+
+  return value > 0;
 }
 
 function buildChoiceLesson(choice, chapter) {
@@ -1126,7 +1139,9 @@ function renderStatChanges(effects, beforeStats) {
   Object.keys(effects).forEach((key) => {
     const change = stats[key] - beforeStats[key];
     const item = document.createElement("span");
-    item.className = `change-pill ${change >= 0 ? "positive" : "negative"}`;
+    item.className = `change-pill ${
+      isBeneficialStatChange(key, change) ? "positive" : "negative"
+    }`;
     item.innerText = `${statMeta[key].icon} ${statMeta[key].label} ${
       change > 0 ? "+" : ""
     }${change}`;
